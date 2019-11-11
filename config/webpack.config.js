@@ -14,18 +14,23 @@ module.exports = {
   output: {
     // hash用于配合浏览器缓存策略，这是前端性能优化的一种方案
     filename: '[name].[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),   // 指定打包结果的存放目录
+    // 指定打包结果的存放目录
+    path: path.resolve(__dirname, '../dist'),
     // publicPath: '/xxxx/'
   },
   devServer: {
-    contentBase: './dist',   // 指定本地服务的静态资源根路径
-    hot: true  // 开启热更新
+    // 指定本地服务的静态资源根路径
+    contentBase: 'dist',
+    // 开启热更新
+    hot: true,
+    port: 9000
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new webpack.NamedModulesPlugin(),  // 用于热更新
+    // 用于热更新
+    new webpack.NamedModulesPlugin(), 
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
