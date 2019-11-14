@@ -15,6 +15,9 @@ import {
   Switch
 } from 'react-router-dom'
 
+import { Provider } from 'mobx-react'
+import store from './store/index.js'
+
 // 布局组件
 import { Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -81,26 +84,29 @@ export default class App extends React.Component {
 
     return (
       <HashRouter>
-        <div className='app'>
-        <Layout style={{'height': '100%'}}>
-          <Sider width='135'>
-            <div>logo</div>
-            {
-              this.createNavLink(routes)
-            }
-          </Sider>
-          <Layout>
-            <Header>
-              <div>用户名</div>
-            </Header>
-            <Content>
+        <Provider store={store}>
+          <div className='app'>
+          <Layout style={{'height': '100%'}}>
+            <Sider width='135'>
+              <div>logo</div>
               {
-                this.createRoute(routes)
+                this.createNavLink(routes)
               }
-            </Content>
+            </Sider>
+            <Layout>
+              <Header>
+                <div>用户名</div>
+              </Header>
+              <Content>
+                {
+                  this.createRoute(routes)
+                }
+              </Content>
+            </Layout>
           </Layout>
-        </Layout>
-        </div>
+          </div>
+        </Provider>
+
       </HashRouter>
     )
   }

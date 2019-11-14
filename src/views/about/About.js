@@ -1,7 +1,9 @@
 import React from 'react'
+import {inject, observer} from 'mobx-react'
 
 import { Table } from 'antd'
 
+@inject('store') @observer
 export default class About extends React.Component {
   constructor(props) {
     super(props)
@@ -21,6 +23,9 @@ export default class About extends React.Component {
         },
       ]
     }
+  }
+  componentDidMount() {
+    console.log(this.props.store.time)
   }
   render() {
     let { list } = this.state
@@ -44,6 +49,7 @@ export default class About extends React.Component {
     return(
       <div>
         <h1>关于我们公司</h1>
+        <h1>{this.props.store.time}</h1>
         <Table dataSource={list} columns={columns} rowKey='id' />
       </div>
     )
