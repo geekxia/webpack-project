@@ -15,10 +15,6 @@ import {
   Switch
 } from 'react-router-dom'
 
-// 布局组件
-import { Layout } from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
-
 // 页面
 import routes from './views/index.js'
 
@@ -27,6 +23,7 @@ export default class App extends React.Component {
     // 调用父组件的构造器方法
     super(props)
     this.state = {
+
     }
   }
 
@@ -81,25 +78,20 @@ export default class App extends React.Component {
 
     return (
       <HashRouter>
-        <div className='app'>
-        <Layout style={{'height': '100%'}}>
-          <Sider width='135'>
-            <div>logo</div>
+        <div>
+          {/* 生成导航链接 */}
+          {
+            this.createNavLink(routes)
+          }
+
+          {/* 生成组件视图容器 */}
+          <Switch>
             {
-              this.createNavLink(routes)
+              this.createRoute(routes)
             }
-          </Sider>
-          <Layout>
-            <Header>
-              <div>用户名</div>
-            </Header>
-            <Content>
-              {
-                this.createRoute(routes)
-              }
-            </Content>
-          </Layout>
-        </Layout>
+            <Redirect from='/*' to='/'></Redirect>
+          </Switch>
+
         </div>
       </HashRouter>
     )

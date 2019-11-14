@@ -1,7 +1,15 @@
 .app {
-  height: 200px;
-  width: 100%;
-  background: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: green;
+}
+
+a {
+  text-decoration: none;
 }
 
 .todo {
@@ -15,4 +23,9 @@
 .todo>span:nth-child(4) {
   padding-left: 15px;
   cursor: pointer;
+}
+
+
+.on {
+  color: red;
 }
