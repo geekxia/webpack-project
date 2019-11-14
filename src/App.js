@@ -15,15 +15,15 @@ import {
   Switch
 } from 'react-router-dom'
 
-import { Provider } from 'mobx-react'
-import store from './store/index.js'
-
 // 布局组件
 import { Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 // 页面
 import routes from './views/index.js'
+
+import { Provider } from 'mobx-react'
+import store from './store/index.js'
 
 export default class App extends React.Component {
   constructor(props) {
