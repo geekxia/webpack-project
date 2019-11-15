@@ -5,6 +5,8 @@ import AntdPage from './antdpage/AntdPage.js'
 import About from './about/About.js'
 import News from './news/News.js'
 import NewsDetail from './news/Detail.js'
+import TestContext from './test/TestContext.js'
+import TestMobx from './test/TestMobx.js'
 
 
 const routes = [
@@ -52,7 +54,18 @@ const routes = [
       }
     ]
   },
-
+  {
+    id: 7,
+    path: '/test',
+    text: '上下文',
+    component: TestContext
+  },
+  {
+    id: 8,
+    path: '/mobx',
+    text: '测试mobx',
+    component: TestMobx
+  }
 
 ]
 

@@ -9,10 +9,10 @@ import 'antd/dist/antd.css'
 import {
   BrowserRouter,  // 浏览器路由，刷新、请求时404，需要后端做重定向处理
   HashRouter,  // 没有上述问题，但是URL上有一个#
-  NavLink,
-  Route,
-  Redirect,
-  Switch
+  NavLink,  // 可以使用activeClassName指定高亮样式
+  Route,    // （页面）组件的显示容器
+  Redirect, // 重定向，一般放在所有Route组件的后面，from='/*' to='/'
+  Switch    // 用于包裹所有的容器显示组件，有且只匹配第一个符合条件
 } from 'react-router-dom'
 
 // 页面

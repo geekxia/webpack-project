@@ -21,6 +21,12 @@ module.exports = {
   devServer: {
     contentBase: './dist',   // 指定本地服务的静态资源根路径
     hot: true,  // 开启热更新
+    proxy: {    // 配置代理
+      "/soso": {
+        target: "https://c.y.qq.com",
+        secure: false
+      }
+    }
   },
   plugins: [
     // 用于把打包后的入口.js文件插入到index.html文件中去

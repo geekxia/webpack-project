@@ -133,7 +133,7 @@ export default class Home extends React.Component {
           type="text"
           ref='pwd'
           value={todo}
-          onInput={this.inputChange.bind(this)} />
+          onChange={this.inputChange.bind(this)} />
         { /* 事件绑定，必须手动地改变this指向 */ }
         <button onClick={this.getInputValue.bind(this)}>添加一条任务</button>
         <br/>

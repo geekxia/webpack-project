@@ -1,9 +1,13 @@
 import React from 'react'
-import {inject, observer} from 'mobx-react'
 
 import { Table } from 'antd'
 
-@inject('store') @observer
+import Child1 from '../../components/child/Child1.js'
+import Child2 from '../../components/child/Child2.js'
+import Child3 from '../../components/child/Child2.js'
+
+
+
 export default class About extends React.Component {
   constructor(props) {
     super(props)
@@ -21,11 +25,15 @@ export default class About extends React.Component {
           age: 42,
           address: '西湖区湖底公园1号',
         },
-      ]
+      ],
+      msg: '1912'
     }
   }
-  componentDidMount() {
-    console.log(this.props.store.time)
+  changeMsg(msg) {
+    console.log(msg)
+    this.setState({
+      msg: msg
+    })
   }
   render() {
     let { list } = this.state
@@ -46,11 +54,16 @@ export default class About extends React.Component {
         key: 'address',
       },
     ]
+    let { msg } = this.state
     return(
+
       <div>
         <h1>关于我们公司</h1>
-        <h1>{this.props.store.time}</h1>
-        <Table dataSource={list} columns={columns} rowKey='id' />
+        {/*<Table dataSource={list} columns={columns} rowKey='id' />*/}
+        <Child1 onChange={this.changeMsg.bind(this)}></Child1>
+        <Child2 msg={msg}></Child2>
+        <Child3 msg={msg}></Child3>
+
       </div>
     )
   }

@@ -22,14 +22,15 @@ const { Header, Footer, Sider, Content } = Layout;
 // 页面路由
 import routes from './views/index.js'
 
-import { Provider } from 'mobx-react'
-import store from './store/index.js'
+import { ThemeContext, themes } from './util/context.js'
+let { Provider } = ThemeContext
 
 export default class App extends React.Component {
   constructor(props) {
     // 调用父组件的构造器方法
     super(props)
     this.state = {
+      theme: themes.dark
     }
   }
 
@@ -80,10 +81,19 @@ export default class App extends React.Component {
     return arr;
   }
 
+
+  // 切换context主题色
+  switchTheme() {
+    this.setState({
+      theme: this.state.theme === themes.dark ? themes.light : themes.dark
+    })
+  }
+
   render() {
+    let { theme } = this.state
     return (
       <HashRouter>
-        <Provider store={store}>
+        <Provider value={theme}>
         <div className='app'>
         <Layout style={{'height': '100%'}}>
           <Sider width='135'>
@@ -97,6 +107,7 @@ export default class App extends React.Component {
               <div>用户名</div>
             </Header>
             <Content>
+              <button onClick={this.switchTheme.bind(this)}>切换颜色</button>
               {
                 this.createRoute(routes)
               }
